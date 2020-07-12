@@ -37,6 +37,15 @@ Use the "Delete meeting" section to Delete a meeting.
 
 - The process checks every few seconds to join a valid meeting. This is controlled by the `CHECKTIME` variable which is set to 10 seconds by default. Change that  variabel to change how often the procces checks for meetings to join.
 
+# Error resolving
+ - Logs are enabled by default, so in any case there is an error check for logs
+ - Retry count is set to 5, which can me changed as needed in lib/Gmeet.js::51:22
+## Known errors
+ - Invalid email passs
+   - Provide email/pass in env file or through gui
+ - Unable to open chrome, try with no sandbox mode
+   - to resolve this just add `--no-sandbox` to lib/Gmeet::27:74 as a string
+
 # Disclaimer
 
 Please use this at your own risk. I do not guaranty that this will work 100% of time. If you choose to use this, know that there are chances of you not joining the meeting successfully and loosing your attendance.
