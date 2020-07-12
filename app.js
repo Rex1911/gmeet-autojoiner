@@ -11,10 +11,19 @@ const HEADLESS = false  //Change this to true if you dont want the chrome UI to 
 const VERBOSE = false // Change this to true to get extra messages in the console
 const CHECKTIME = 10000 // This variable determines how often will the code check for meeting. Value in miliseconds
 
+let email, password
+if(env) {
+	email = env.EMAIL_ID
+	password = env.PASSWORD
+} else {
+	email = "Enter your email here",
+	password = "Enter your password here"
+}
+
 let meetings = {}
 let config = {
-	email: env.EMAIL_ID,
-	password: env.PASSWORD,
+	email: email,
+	password: password
 }
 
 app.use(bodyParser.urlencoded({ extended: false }))
