@@ -4,6 +4,7 @@ Join Google meet meetings automatically while you sleep peacefully
 # Prerequisite:
 
 - Node.js  v8 or greater
+- Chrome Browser 75+ (wont work properly on firefox)
 
 # Usage Guide:
 
@@ -36,6 +37,15 @@ Use the "Delete meeting" section to Delete a meeting.
 - By default, a chrome window is opened when joining a meeting. If you dont want the chrome window to open, go into app.js and change `HEADLESS=false` to `HEADLESS=true`
 
 - The process checks every few seconds to join a valid meeting. This is controlled by the `CHECKTIME` variable which is set to 10 seconds by default. Change that  variabel to change how often the procces checks for meetings to join.
+
+# Error resolving
+ - Logs are enabled by default, so in any case there is an error check for logs
+ - Retry count is set to 5, which can me changed as needed in lib/Gmeet.js::51:22
+## Known errors
+ - Invalid email passs
+   - Provide email/pass in env file or through gui
+ - Unable to open chrome, try with no sandbox mode
+   - to resolve this just add `--no-sandbox` to lib/Gmeet::27:74 as a string
 
 # Disclaimer
 

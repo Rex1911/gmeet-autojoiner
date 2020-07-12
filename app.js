@@ -4,17 +4,17 @@ const Gmeet = require('./lib/Gmeet');
 const bodyParser = require('body-parser')
 const shortid = require('shortid');
 const app = express()
-
+const env = require('dotenv').config().parsed
 const gmeet = new Gmeet()
 
-const HEADLESS = false //Change this to true if you dont want the chrome UI to show up
+const HEADLESS = false  //Change this to true if you dont want the chrome UI to show up
 const VERBOSE = false // Change this to true to get extra messages in the console
 const CHECKTIME = 10000 // This variable determines how often will the code check for meeting. Value in miliseconds
 
 let meetings = {}
 let config = {
-	email: "Enter you email here",
-	password: "Enter the password for the email",
+	email: env.EMAIL_ID,
+	password: env.PASSWORD,
 }
 
 app.use(bodyParser.urlencoded({ extended: false }))
